@@ -54,7 +54,9 @@ const {
 const pubDateISO = formatISO(pubDate);
 const pubDateJA = format(pubDate, 'yyyy年MM月dd日');
 
-const html = markdownToHtml(body);
+const html = import.meta.env.PROD
+	? markdownToHtml.default(body)
+	: markdownToHtml(body)
 ---
 <Layout pageTitle={title} description={description} pageImg={image}>
 	<article>
