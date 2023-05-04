@@ -1,0 +1,7 @@
+---
+const { prev, next, prevTitle = '前へ', nextTitle = '次へ' } = Astro.props;
+---
+<div class="flex-spacebetween">
+    {prev ? <a href={prev}>← {prevTitle}</a> : <span />}
+    {next ? <a href={next}>{nextTitle} →</a> : <span />}
+</div>
