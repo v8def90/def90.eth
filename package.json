@@ -3,9 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "dev": "tinacms dev -c \"astro dev\"",
+    "start": "tinacms dev -c \"astro dev\"",
+    "build": "tinacms build && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -15,6 +15,7 @@
     "@astrojs/prefetch": "^0.2.1",
     "@astrojs/rss": "^2.4.1",
     "@astrojs/sitemap": "^1.2.2",
+    "@tinacms/cli": "^1.5.10",
     "astro": "^2.3.4",
     "astro-icon": "^0.8.0",
     "date-fns": "^2.30.0",
@@ -22,6 +23,7 @@
     "github-markdown-css": "^5.2.0",
     "plaiceholder": "^2.5.0",
     "sharp": "^0.32.1",
+    "tinacms": "^1.5.3",
     "zenn-content-css": "^0.1.143",
     "zenn-markdown-html": "^0.1.143"
   }
