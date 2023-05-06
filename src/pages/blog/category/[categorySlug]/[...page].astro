@@ -9,7 +9,9 @@ import { compareDesc } from 'date-fns';
 import { categories } from '@lib/constants'
 
 export async function getStaticPaths({ paginate }) {
-    const blogPosts = await getCollection('blog');
+    const blogPosts = await getCollection('blog', ({ data }) => {
+        return data.draft === false;
+    });
     const sortedBlogPosts = blogPosts.sort((a, b) =>
 	    compareDesc(a.data.pubDate, b.data.pubDate)
     );
@@ -36,9 +38,9 @@ const { page: { data, url: { prev, next }}, categoryName } = Astro.props;
     <div class="grid">
         {
             data.map((post) => {
-                const {slug, data: { image, title}}= post;
+                const { slug, data: { image, title }}= post;
                 return (
-                    <Card url={`/blog/${slug}`} src={image} titile={title} />
+                    <Card url={`/blog/${slug}`} src={image} title={title} />
                 )
             }
             )

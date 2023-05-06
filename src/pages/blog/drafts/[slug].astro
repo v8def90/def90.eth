@@ -12,7 +12,7 @@ import 'github-markdown-css/github-markdown-light.css';
 
 export async function getStaticPaths({}) {
     const blogPosts = await getCollection('blog', ({ data }) => {
-        return data.draft === false;
+        return data.draft === true;
     });
     const sortedBlogPosts = blogPosts.sort((a, b) =>
 		compareDesc(a.data.pubDate, b.data.pubDate)
@@ -29,7 +29,7 @@ export async function getStaticPaths({}) {
 				? {}
 				: {
 						prevTitle: sortedBlogPosts[currentPage + 1].data.title,
-						prev: `/blog/${sortedBlogPosts[currentPage + 1].slug}`,
+						prev: `/blog/drafts/${sortedBlogPosts[currentPage + 1].slug}`,
 				  };
 
 		// 新しい記事へ → インデックス減
@@ -38,7 +38,7 @@ export async function getStaticPaths({}) {
 				? {}
 				: {
 						nextTitle: sortedBlogPosts[currentPage - 1].data.title,
-						next: `/blog/${sortedBlogPosts[currentPage - 1].slug}`,
+						next: `/blog/drafts/${sortedBlogPosts[currentPage - 1].slug}`,
 				  };
 
 		return { params: { slug }, props: { post, url: { ...prev, ...next } } };
@@ -56,6 +56,7 @@ const pubDateJA = format(pubDate, 'yyyy年MM月dd日');
 ---
 <Layout pageTitle={title} description={description} pageImg={image}>
 	<article>
+		<h2>---This page is draft page---</h2>
 		<Custompicture src={image} alt="" />
 		<h1>{title}</h1>
         <div class="flex-spacebetween">
