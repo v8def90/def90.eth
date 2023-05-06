@@ -8,7 +8,7 @@ import { compareDesc } from 'date-fns';
 
 export async function getStaticPaths({ paginate }) {
     const blogPosts = await getCollection('blog', ({ data }) => {
-        return data.draft === false;
+        return data.draft === true;
     });
     // const blogPosts = await getCollection('blog');
     const sortedBlogPosts = blogPosts.sort((a, b) =>
@@ -21,7 +21,7 @@ const { page: { data, url: { prev, next }} } = Astro.props;
 
 ---
 <Layout pageTitle="Blog Posts" description="ブログの記事一覧">
-    <h1>Blog Posts</h1>
+    <h1>drafts</h1>
 
     <div class="grid">
         {
