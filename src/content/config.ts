@@ -1,5 +1,5 @@
 import { z, defineCollection } from 'astro:content';
-import { zonedTimeToUtc } from 'date-fns-tz';
+// import { zonedTimeToUtc } from 'date-fns-tz';
 
 const blogCollection = defineCollection({
 	schema: z.object({
