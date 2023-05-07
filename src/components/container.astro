@@ -6,14 +6,14 @@ const { maxWidth = '720px' } = Astro.props;
   <slot />
 </div>
 <style define:vars={{ maxWidth }}>
-@layer layout {
-  .container {
-    max-width: var(--maxWidth);
-    padding-inline: 1em;
-    margin-inline: auto;
+  @layer layout {
+    .container {
+      max-width: var(--maxWidth);
+      padding-inline: 1em;
+      margin-inline: auto;
+    }
+    .container .container {
+      padding-inline: 0;
+    }
   }
-  .container .container {
-    padding-inline: 0;
-  }
-}
 </style>
