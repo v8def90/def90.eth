@@ -24,9 +24,9 @@ const {
 ---
 
 <Layout pageTitle="Blog Posts" description="ブログの記事一覧">
-  <h1>Blog Posts</h1>
+  <h1 class="text-2xl md:text-4xl mb-10 mt-10">Blog Posts</h1>
 
-  <div class="grid">
+  <div class="grid grid-cols-2 gap-5">
     {
       data.map((post) => {
         const {

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* .icon {
+        @apply text-dimgray h-[1.5em];
+    } */
+
+  /* カード */
+  .card-img {
+    @apply aspect-w-2 aspect-h-1 object-cover;
+  }
+
+  .card-title {
+    @apply text-lg font-normal;
+  }
+}

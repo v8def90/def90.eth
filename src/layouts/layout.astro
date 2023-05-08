@@ -1,7 +1,8 @@
 ---
-import '@styles/config.css';
-import '@styles/default.css';
-import '@styles/layout.css';
+// import '@styles/config.css';
+// import '@styles/default.css';
+// import '@styles/layout.css';
+import '@styles/utilities.css';
 
 import Container from '@components/container.astro';
 import Footer from '@components/footer.astro';
@@ -18,7 +19,7 @@ const props = Astro.props;
   <body>
     <Container>
       <Header />
-      <main>
+      <main class="flex flex-col justify-center min-h-[60vh] text-center">
         <slot />
       </main>
       <Footer />
