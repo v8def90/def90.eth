@@ -36,9 +36,9 @@ const {
 ---
 
 <Layout pageTitle={categoryName} description={`${categoryName}の記事一覧`}>
-  <h1>{categoryName}</h1>
+  <h1 class="my-10 text-2xl md:text-4xl">{categoryName}</h1>
 
-  <div class="grid">
+  <div class="grid grid-cols-2 gap-5">
     {
       data.map((post) => {
         const {

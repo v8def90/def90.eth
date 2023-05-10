@@ -16,10 +16,10 @@ const props = Astro.props;
   <head>
     <Meta {...props} />
   </head>
-  <body>
+  <body class="font-sans antialiased">
     <Container>
       <Header />
-      <main class="flex flex-col justify-center min-h-[60vh] text-center">
+      <main class="flex min-h-[60vh] flex-col justify-center text-center">
         <slot />
       </main>
       <Footer />

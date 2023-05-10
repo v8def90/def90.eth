@@ -1,6 +1,6 @@
 module.exports = {
   ignorePatterns: ['*.d.ts'],
-  extends: ['eslint:recommended', 'plugin:import/typescript', 'plugin:astro/recommended'],
+  extends: ['eslint:recommended', 'plugin:import/typescript', 'plugin:astro/recommended', 'plugin:tailwindcss/recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
