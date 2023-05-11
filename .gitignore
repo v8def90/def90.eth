@@ -26,4 +26,4 @@ node_modules
 /test-results*/
 /playwright-report/
 /playwright/.cache/
-tests/index.spec.ts-snapshots/
+tests/index.spec.ts-snapshots/*
