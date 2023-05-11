@@ -5,6 +5,7 @@ import mdx from "@astrojs/mdx";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
 const {
   siteUrl
 } = siteMeta;
@@ -15,5 +16,5 @@ export default defineConfig({
   site: siteUrl,
   integrations: [image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  }), mdx(), prefetch(), sitemap(), tailwind()]
+  }), mdx(), prefetch(), sitemap(), tailwind(), react()]
 });

@@ -6,7 +6,7 @@ import '@styles/utilities.css';
 
 import Container from '@components/container.astro';
 import Footer from '@components/footer.astro';
-import Header from '@components/header.astro';
+import Header from '@components/header';
 import Meta from '@components/meta.astro';
 
 const props = Astro.props;
@@ -16,13 +16,29 @@ const props = Astro.props;
   <head>
     <Meta {...props} />
   </head>
-  <body class="font-sans antialiased">
+  <body class="bg-stone-200 font-sans antialiased dark:bg-gray-800 dark:text-stone-200">
     <Container>
-      <Header />
+      <Header client:load />
       <main class="flex min-h-[60vh] flex-col justify-center text-center">
         <slot />
       </main>
       <Footer />
     </Container>
+    <script is:inline>
+      // localStorageにデータがあるときはそちらを適用
+      if (typeof window.localStorage.getItem('theme') === 'string') {
+        const currentTheme = window.localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      }
+      // localStorageになにもない時はmatchMediaで判定
+      if (
+        typeof window.localStorage.getItem('theme') !== 'string' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
   </body>
 </html>

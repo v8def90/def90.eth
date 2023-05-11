@@ -1,6 +1,12 @@
 module.exports = {
-  ignorePatterns: ['*.d.ts'],
-  extends: ['eslint:recommended', 'plugin:import/typescript', 'plugin:astro/recommended', 'plugin:tailwindcss/recommended'],
+  ignorePatterns: ['ThemeToggleButton.tsx','*.d.ts'],
+  extends: [
+    'eslint:recommended',
+    'plugin:import/typescript',
+    'plugin:astro/recommended',
+    'plugin:tailwindcss/recommended',
+    // 'plugin:react/recommended' // 追加
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -12,7 +18,7 @@ module.exports = {
   env: {
     es6: true
   },
-  plugins: ['@typescript-eslint', 'import'],
+  plugins: ['@typescript-eslint', 'import', 'react'],
   rules: {
     '@typescript-eslint/consistent-type-imports': [
       2,
@@ -21,6 +27,8 @@ module.exports = {
       },
     ],
     'import/order': [2, { alphabetize: { order: 'asc' } }],
+    // 'react/jsx-uses-react': 'error',
+    // 'react/jsx-uses-vars': 'error',
   },
   overrides: [
     {
