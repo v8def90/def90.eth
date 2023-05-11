@@ -23,6 +23,7 @@ pnpm-debug.log*
 .eslintcache
 
 node_modules
-/test-results/
+/test-results*/
 /playwright-report/
 /playwright/.cache/
+tests/index.spec.ts-snapshots/
