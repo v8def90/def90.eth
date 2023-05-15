@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "start": "tinacms dev -c \"astro dev\"",
-    "build": "tinacms build && astro build",
+    "build": "tinacms build && astro build && find ./dist -name *.map -delete",
     "preview": "astro preview",
     "astro": "astro",
     "e2e:all": "playwright test",
