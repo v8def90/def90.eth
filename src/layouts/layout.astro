@@ -9,12 +9,47 @@ import Footer from '@components/footer.astro';
 import Header from '@components/header';
 import Meta from '@components/meta.astro';
 
+import * as Sentry from '@sentry/node';
+
+Sentry.init({
+  dsn: 'https://cc010251697e497ebf17ceb9bec944c4@o1404825.ingest.sentry.io/4505165680869376',
+
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 1.0
+});
+
+// try {
+//   throw new Error("Hello Sentry!from layout.astro module!");
+// } catch (e) {
+//   Sentry.captureException(e);
+// }
+
 const props = Astro.props;
 ---
 
 <html lang="ja">
   <head>
     <Meta {...props} />
+    <script>
+      import * as Sentry from '@sentry/browser';
+
+      Sentry.init({
+        dsn: 'https://cc010251697e497ebf17ceb9bec944c4@o1404825.ingest.sentry.io/4505165680869376',
+        integrations: [new Sentry.BrowserTracing()],
+        beforeSend(event) {
+          if (event.exception) {
+            Sentry.showReportDialog({ eventId: event.event_id });
+          }
+          return event;
+        },
+
+        // Set tracesSampleRate to 1.0 to capture 100%
+        // of transactions for performance monitoring.
+        // We recommend adjusting this value in production
+        tracesSampleRate: 1.0
+      });
+    </script>
   </head>
   <body class="bg-stone-200 font-sans antialiased dark:bg-gray-800 dark:text-stone-200">
     <Container>
