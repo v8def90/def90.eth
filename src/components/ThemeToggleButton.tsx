@@ -40,7 +40,7 @@ const ThemeToggleButton = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="flex-shrink-0 leading-tight text-sm md:text-base bg-gray-400 p-2 lg:py-1 lg:px-2 rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      className="flex-shrink-0 leading-tight text-sm md:text-base bg-gray-400 py-1 px-2 lg:py-1 lg:px-2 rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
     >
       {theme === 'light' ? '☾' : '☼'}
     </button>
