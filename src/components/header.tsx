@@ -1,4 +1,5 @@
 import ThemeToggleButton from '@components/ThemeToggleButton'; //eslint-disable-line
+import { siteMeta } from '@lib/constants';
 
 export const Header = () => {
   return (
@@ -10,8 +11,8 @@ export const Header = () => {
             rel="prefetch"
             href="/"
           >
-            <img src="/logo.svg" alt="" width="28" height="28" />
-            Tech Flow.
+            <img src="/calm.svg" alt="" width="28" height="28" />
+            {siteMeta.siteTitle}
           </a>
           <ul className="flex gap-4">
             <li>

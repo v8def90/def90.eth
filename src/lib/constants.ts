@@ -1,15 +1,18 @@
 export const siteMeta = {
-  siteTitle: 'Tech Flow.',
-  siteDesc: 'Tech Flowの技術ブログサイト',
+  siteTitle: 'Calm/LightYears',
+  siteDesc: 'Calm Light Years',
   siteUrl: 'https://def90eth.vercel.app/',
   siteLocale: 'ja_JP',
   siteType: 'website',
-  siteIcon: '/favicon.png',
-  siteImg: '/ogp.jpg'
+  siteIcon: '/calm.svg',
+  siteImg: '/ogp.jpg',
+  twitter: 'https://twitter.com/def90eth',
+  github: 'https://github.com/v8def90'
 };
 
 export const categories = [
   { categoryName: 'ポエム', categorySlug: 'poem' },
+  { categoryName: 'Python', categorySlug: 'python' },
   { categoryName: 'JavaScript', categorySlug: 'javascript' },
   { categoryName: 'TypeScript', categorySlug: 'typescript' },
   { categoryName: 'NextJs', categorySlug: 'nextjs' },
