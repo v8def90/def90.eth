@@ -44,6 +44,7 @@
             "list": true,
             "options": [
               { "label": "ポエム", "value": "poem" },
+              { "label": "Python", "value": "python" },
               { "label": "JavaScript", "value": "javascript" },
               { "label": "TypeScript", "value": "typescript" },
               { "label": "NextJs", "value": "nextjs" },

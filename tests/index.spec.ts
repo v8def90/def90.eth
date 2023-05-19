@@ -11,7 +11,7 @@ test.describe('Home page', () => {
   });
 
   test('Blog Title link', async ({ page }) => {
-    await page.getByRole('link', { name: 'Tech Flow.' }).click();
+    await page.getByRole('link', { name: 'Calm/LightYears' }).click();
     await expect(page.url()).toBe('http://localhost:3000/');
   });
 
@@ -36,6 +36,6 @@ test.describe('Home page', () => {
   });
 
   test('top text', async ({ page }) => {
-    await expect(page.locator('h1')).toHaveText('Astro');
+    await expect(page.locator('h1')).toHaveText('def90.eth');
   });
 });
