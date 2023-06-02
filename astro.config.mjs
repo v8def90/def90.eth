@@ -1,4 +1,5 @@
 import image from "@astrojs/image";
+import markdoc from '@astrojs/markdoc';
 import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
 import prefetch from "@astrojs/prefetch";
@@ -22,7 +23,7 @@ export default defineConfig({
   site: siteUrl,
   integrations: [image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  }), mdx(), prefetch(), sitemap(), tailwind(), react()],
+  }), mdx(), prefetch(), sitemap(), tailwind(), react(), markdoc()],
   // output: "server",
   adapter: node({
     mode: "standalone"

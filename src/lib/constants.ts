@@ -1,11 +1,11 @@
 export const siteMeta = {
   siteTitle: 'Calm/LightYears',
-  siteDesc: 'Calm Light Years',
+  siteDesc: 'calmly for many light years',
   siteUrl: 'https://def90eth.vercel.app/',
   siteLocale: 'ja_JP',
   siteType: 'website',
   siteIcon: '/calm.svg',
-  siteImg: '/ogp.jpg',
+  siteImg: '/calm.svg',
   twitter: 'https://twitter.com/def90eth',
   github: 'https://github.com/v8def90'
 };

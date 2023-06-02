@@ -4,11 +4,14 @@ import Pagination from '@components/pagination.astro';
 import Layout from '@layouts/layout.astro';
 
 import { categories } from '@lib/constants';
+import imgToPicture from '@lib/imgToPicture';
 import { getCollection } from 'astro:content';
 
 import { format, formatISO, compareDesc } from 'date-fns';
 
 // import 'github-markdown-css/github-markdown-light.css';
+import markdownToHtml from 'zenn-markdown-html';
+import 'zenn-content-css';
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection('blog', ({ data }) => {
@@ -44,13 +47,25 @@ export async function getStaticPaths() {
 }
 
 const { post, url } = Astro.props;
-const { Content } = await post.render();
+// const { Content } = await post.render();
 
 const {
+  body,
   data: { title, pubDate, image, category, description }
 } = post;
 const pubDateISO = formatISO(pubDate);
 const pubDateJA = format(pubDate, 'yyyy年MM月dd日');
+
+const html = import.meta.env.PROD
+  ? // @ts-ignore
+    markdownToHtml.default(body, {
+      embedOrigin: 'https://embed.zenn.studio'
+    })
+  : markdownToHtml(body, {
+      embedOrigin: 'https://embed.zenn.studio'
+    });
+
+const convertedHTML = imgToPicture(html);
 ---
 
 <Layout pageTitle={title} description={description} pageImg={image}>
@@ -77,8 +92,10 @@ const pubDateJA = format(pubDate, 'yyyy年MM月dd日');
         }
       </div>
     </div>
-    <div class="prose dark:prose-dark md:prose-lg my-10 max-w-none">
-      <Content components={{ img: Custompicture }} />
+    <div class="znc large-space">
+      <!-- <div class="prose dark:prose-dark md:prose-lg my-10 max-w-none"> -->
+      <!-- <Content components={{ img: Custompicture }} /> -->
+      <Fragment set:html={convertedHTML} />
     </div>
     <Pagination {...url} />
   </article>
