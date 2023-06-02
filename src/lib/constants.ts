@@ -5,7 +5,7 @@ export const siteMeta = {
   siteLocale: 'ja_JP',
   siteType: 'website',
   siteIcon: '/Calm.png',
-  siteImg: '/Calm.png',
+  siteImg: '/Calm.img',
   twitter: 'https://twitter.com/def90eth',
   github: 'https://github.com/v8def90'
 };

@@ -11,7 +11,7 @@ export const Header = () => {
             rel="prefetch"
             href="/"
           >
-            <img src="/calm.svg" alt="" width="28" height="28" />
+            <img src="/Calm.png" alt="" width="28" height="28" />
             {siteMeta.siteTitle}
           </a>
           <ul className="flex gap-4">
