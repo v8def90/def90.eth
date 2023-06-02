@@ -4,8 +4,8 @@ export const siteMeta = {
   siteUrl: 'https://def90eth.vercel.app/',
   siteLocale: 'ja_JP',
   siteType: 'website',
-  siteIcon: '/calm.svg',
-  siteImg: '/calm.svg',
+  siteIcon: '/Calm.png',
+  siteImg: '/Calm.png',
   twitter: 'https://twitter.com/def90eth',
   github: 'https://github.com/v8def90'
 };
