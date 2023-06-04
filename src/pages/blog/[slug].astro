@@ -1,4 +1,5 @@
 ---
+import CategoryButton from '@components/CategoryButton.astro';
 import Custompicture from '@components/custompicture.astro';
 import Pagination from '@components/pagination.astro';
 import Layout from '@layouts/layout.astro';
@@ -54,7 +55,7 @@ const {
   data: { title, pubDate, image, category, description }
 } = post;
 const pubDateISO = formatISO(pubDate);
-const pubDateJA = format(pubDate, 'yyyy年MM月dd日');
+const pubDateJA = format(pubDate, 'yyyy/MM/dd');
 
 const html = import.meta.env.PROD
   ? // @ts-ignore
@@ -75,22 +76,23 @@ const convertedHTML = imgToPicture(html);
     <div class="flex-spacebetween mb-10 flex justify-between">
       <time datetime={pubDateISO}>{pubDateJA}</time>
 
-      <div class="flex gap-4">
+      <ul class="flex flex-wrap gap-3">
         {
           category.map((categorySlug) => {
             const categoryName = categories.find((cat) => cat.categorySlug === categorySlug).categoryName;
             return (
-              <a
-                class="text-inherit no-underline hover:underline"
-                rel="prefetch"
-                href={`/blog/category/${categorySlug}`}
-              >
-                {categoryName}
-              </a>
+              // <a
+              //   class="text-inherit no-underline hover:underline"
+              //   rel="prefetch"
+              //   href={`/blog/category/${categorySlug}`}
+              // >
+              //   {categoryName}
+              // </a>
+              <CategoryButton categoryName={categoryName} categorySlug={categorySlug} />
             );
           })
         }
-      </div>
+      </ul>
     </div>
     <div class="znc large-space">
       <!-- <div class="prose dark:prose-dark md:prose-lg my-10 max-w-none"> -->

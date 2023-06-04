@@ -1,0 +1,15 @@
+---
+export interface Props {
+  categoryName: string;
+  categorySlug: string;
+}
+const { categoryName, categorySlug } = Astro.props;
+---
+
+<li>
+  <a
+    href={`/blog/category/${categorySlug}`}
+    class="rounded-lg bg-blue-500 px-3 py-1 text-sm text-white transition-opacity hover:opacity-90 lg:text-base"
+    >{categoryName}</a
+  >
+</li>
