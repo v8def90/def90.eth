@@ -4,9 +4,7 @@ import { siteMeta } from '@lib/constants';
 const { siteTitle, siteDesc, siteLocale, siteType, siteIcon, siteImg } = siteMeta;
 const { pageTitle, description = siteDesc, pageImg = siteImg } = Astro.props;
 const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
-// const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : '';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-// const socialImageURL = Astro.site ? new URL(pageImg, Astro.site) : '';
 const socialImageURL = new URL(pageImg, Astro.site);
 ---
 

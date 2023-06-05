@@ -1,4 +1,5 @@
 ---
+import CategoryButton from '@components/CategoryButton.astro';
 import Custompicture from '@components/custompicture.astro';
 import Pagination from '@components/pagination.astro';
 import Layout from '@layouts/layout.astro';
@@ -9,7 +10,6 @@ import { getCollection } from 'astro:content';
 
 import { format, formatISO, compareDesc } from 'date-fns';
 
-// import 'github-markdown-css/github-markdown-light.css';
 import markdownToHtml from 'zenn-markdown-html';
 import 'zenn-content-css';
 
@@ -47,14 +47,13 @@ export async function getStaticPaths() {
 }
 
 const { post, url } = Astro.props;
-// const { Content } = await post.render();
 
 const {
   body,
   data: { title, pubDate, image, category, description }
 } = post;
 const pubDateISO = formatISO(pubDate);
-const pubDateJA = format(pubDate, 'yyyy年MM月dd日');
+const pubDateJA = format(pubDate, 'yyyy/MM/dd');
 
 const html = import.meta.env.PROD
   ? // @ts-ignore
@@ -80,22 +79,12 @@ const convertedHTML = imgToPicture(html);
         {
           category.map((categorySlug) => {
             const categoryName = categories.find((cat) => cat.categorySlug === categorySlug).categoryName;
-            return (
-              <a
-                class="text-inherit no-underline hover:underline"
-                rel="prefetch"
-                href={`/blog/category/${categorySlug}`}
-              >
-                {categoryName}
-              </a>
-            );
+            return <CategoryButton categoryName={categoryName} categorySlug={categorySlug} />;
           })
         }
       </div>
     </div>
     <div class="znc large-space">
-      <!-- <div class="prose dark:prose-dark md:prose-lg my-10 max-w-none"> -->
-      <!-- <Content components={{ img: Custompicture }} /> -->
       <Fragment set:html={convertedHTML} />
     </div>
     <Pagination {...url} />

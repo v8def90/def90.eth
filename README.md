@@ -4,5 +4,6 @@
 ## Built with
 - Astro
 - Typescript
+- React
 - tinaCMS
 - tailwindCSS

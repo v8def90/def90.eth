@@ -1,29 +1,24 @@
 ---
-// import '@styles/config.css';
-// import '@styles/default.css';
-// import '@styles/layout.css';
-// import '@styles/utilities.css';
-
 import Container from '@components/container.astro';
 import Footer from '@components/footer.astro';
 import Header from '@components/header';
 import Meta from '@components/meta.astro';
 
-import * as Sentry from '@sentry/node';
+// import * as Sentry from '@sentry/node';
 
-Sentry.init({
-  dsn: 'https://cc010251697e497ebf17ceb9bec944c4@o1404825.ingest.sentry.io/4505165680869376',
+// Sentry.init({
+//   dsn: 'https://cc010251697e497ebf17ceb9bec944c4@o1404825.ingest.sentry.io/4505165680869376',
 
-  // We recommend adjusting this value in production, or using tracesSampler
-  // for finer control
-  tracesSampleRate: 1.0
-});
+//   // We recommend adjusting this value in production, or using tracesSampler
+//   // for finer control
+//   tracesSampleRate: 1.0
+// });
 
-// try {
-//   throw new Error("Hello Sentry!from layout.astro module!");
-// } catch (e) {
-//   Sentry.captureException(e);
-// }
+// // try {
+// //   throw new Error("Hello Sentry!from layout.astro module!");
+// // } catch (e) {
+// //   Sentry.captureException(e);
+// // }
 
 const props = Astro.props;
 ---
@@ -31,7 +26,7 @@ const props = Astro.props;
 <html lang="ja">
   <head>
     <Meta {...props} />
-    <script>
+    <!-- <script>
       import * as Sentry from '@sentry/browser';
 
       Sentry.init({
@@ -49,7 +44,7 @@ const props = Astro.props;
         // We recommend adjusting this value in production
         tracesSampleRate: 1.0
       });
-    </script>
+    </script> -->
     <script is:inline src="https://embed.zenn.studio/js/listen-embed-event.js"></script>
   </head>
   <body class="bg-stone-100 font-sans antialiased dark:bg-gray-800 dark:text-stone-200">

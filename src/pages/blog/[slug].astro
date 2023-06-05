@@ -10,7 +10,6 @@ import { getCollection } from 'astro:content';
 
 import { format, formatISO, compareDesc } from 'date-fns';
 
-// import 'github-markdown-css/github-markdown-light.css';
 import markdownToHtml from 'zenn-markdown-html';
 import 'zenn-content-css';
 
@@ -48,7 +47,6 @@ export async function getStaticPaths() {
 }
 
 const { post, url } = Astro.props;
-// const { Content } = await post.render();
 
 const {
   body,
@@ -80,23 +78,12 @@ const convertedHTML = imgToPicture(html);
         {
           category.map((categorySlug) => {
             const categoryName = categories.find((cat) => cat.categorySlug === categorySlug).categoryName;
-            return (
-              // <a
-              //   class="text-inherit no-underline hover:underline"
-              //   rel="prefetch"
-              //   href={`/blog/category/${categorySlug}`}
-              // >
-              //   {categoryName}
-              // </a>
-              <CategoryButton categoryName={categoryName} categorySlug={categorySlug} />
-            );
+            return <CategoryButton categoryName={categoryName} categorySlug={categorySlug} />;
           })
         }
       </ul>
     </div>
     <div class="znc large-space">
-      <!-- <div class="prose dark:prose-dark md:prose-lg my-10 max-w-none"> -->
-      <!-- <Content components={{ img: Custompicture }} /> -->
       <Fragment set:html={convertedHTML} />
     </div>
     <Pagination {...url} />
