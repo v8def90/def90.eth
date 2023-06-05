@@ -27,12 +27,12 @@ test.describe('Home page', () => {
 
   test('twitter', async ({ page }) => {
     await page.getByRole('link').nth(3).click();
-    await expect(page.url()).toBe('https://twitter.com/');
+    await expect(page.url()).toBe('https://twitter.com/def90eth');
   });
 
   test('github', async ({ page }) => {
     await page.getByRole('link').nth(4).click();
-    await expect(page.url()).toBe('https://github.com/');
+    await expect(page.url()).toBe('https://github.com/v8def90');
   });
 
   test('top text', async ({ page }) => {
