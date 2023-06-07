@@ -6,11 +6,14 @@ const tinacmsCategories = categories.map((category) => {
 });
 
 // Your hosting provider likely exposes this as an environment variable
+// eslint-disable-next-line no-undef
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || 'main';
 
 export default defineConfig({
   branch,
+  // eslint-disable-next-line no-undef
   clientId: process.env.CLIENTID, // Get this from tina.io
+  // eslint-disable-next-line no-undef
   token: process.env.TOKEN, // Get this from tina.io
   build: {
     outputFolder: 'admin',
@@ -28,7 +31,7 @@ export default defineConfig({
         name: 'blog',
         label: 'Blog記事',
         path: 'src/content/blog',
-        format: 'mdx',
+        format: 'md',
         ui: {
           filename: {
             readonly: false,
