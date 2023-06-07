@@ -7,7 +7,7 @@
         "name": "blog",
         "label": "Blog記事",
         "path": "src/content/blog",
-        "format": "mdx",
+        "format": "md",
         "ui": { "filename": { "readonly": false } },
         "defaultItem": { "namespace": ["blog", "defaultItem"] },
         "fields": [
@@ -63,7 +63,7 @@
             "isBody": true,
             "required": true,
             "namespace": ["blog", "body"],
-            "parser": { "type": "mdx" }
+            "parser": { "type": "markdown" }
           },
           {
             "type": "string",
