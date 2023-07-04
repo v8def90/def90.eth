@@ -2,7 +2,7 @@
 title: HumanKind / Rutger Bregman
 slug: HumanKind
 pubDate: 2023-07-03T00:00:00.000Z
-image: /assets/AI.jpg
+image: /assets/poem.jpg
 category:
   - poem
 draft: false
