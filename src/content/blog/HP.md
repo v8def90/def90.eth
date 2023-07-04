@@ -44,13 +44,13 @@ https://tina.io/
 
 仕組みとしては、コンテンツ(ブログの記事や画像)も含めてGithubで管理しています。そのコンテンツはtinaCMSから管理(作成、更新、追加)することが可能で、tinaCMS上でコンテンツの追加等が行われると、githubにpushされるという内容です。今回のサイトはAWS Amplify上に構築していて、github上でcommitされるとCI/CDパイプラインが走って、サイトのコンテンツ(tinaCMSで変更した内容)が更新されるという仕組みになっています。githubの容量制限は10GB/repositoryなのでBlogサイトとしては十分で、Frontend部分のみの利用なのでAmplifyも無料枠の中に収まっています。
 
-!\[\[Pasted image 20230704093320.png]]
+![](/assets/blog1_tinacms1.png)
 
-!\[\[Pasted image 20230704093347.png]]
+![](/assets/blog1_tinacms2.png)
 
 他にもstrapiやNetlify CMSといったHeadlessのCMSも使ってみたかったのですが、strapiはDBレスではなく、tinaCMSがそもそもNetlify-cmsの対抗サービスとして出て来ているようなので、npm tremdsも参考にしながらtinaCMSを選びました。
 
-!\[\[Pasted image 20230704094259.png]]
+![](/assets/blog1_tinacms3.png)
 
 話は変わりますが、Headless XXXのようなものはCMS以外にも転用できるのではないかと考えています。例えばHeadless ERPみたいなものが開発できると、~~業務の標準化ができない~~日本の企業のようなところにはFitする気がしています。画面周りなんかは会社によって求めるものが違うのが当然だと思いますし、事前に作っておくよりは「お客様のための画面を作ります」みたいな営業文句が刺さったりするようなしないような。
 
@@ -70,11 +70,11 @@ Astroの何が面白いかというと、Javascriptのフレームワークで�
 
 その代わりページのレスポンスは早く、他のフレームワークの1.5倍というパフォーマンスを謳ってます。(以下は公式ページより)
 
-!\[\[Pasted image 20230703122938.png]]
+![](/assets/blog1_astro.png)
 
 Lighthouseでレポートも作成してみましたが、割りといいスコアを出しています。今後、別のフレームワークを調査するときの比較対象として残しておきます。
 
-!\[\[Pasted image 20230703130548.png]]
+![](/assets/blog1_astro2.png)
 
 また、ReactやVue, Svelteなどの複数のフレームワークと互換性があるため、そのページコンテンツはAstroで作成しておきながら、ページ内のコンポーネントはReactで作成するといった実装が可能です。
 
