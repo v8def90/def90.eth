@@ -11,7 +11,7 @@ export const siteMeta = {
 };
 
 export const categories = [
-  { categoryName: 'ポエム', categorySlug: 'poem' },
+  { categoryName: 'Poem', categorySlug: 'poem' },
   { categoryName: 'Python', categorySlug: 'python' },
   { categoryName: 'JavaScript', categorySlug: 'javascript' },
   { categoryName: 'TypeScript', categorySlug: 'typescript' },
