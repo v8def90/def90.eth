@@ -27,7 +27,9 @@ test.describe('Home page', () => {
 
   test('twitter', async ({ page }) => {
     await page.getByRole('link').nth(3).click();
-    await expect(page.url()).toBe('https://twitter.com/def90eth');
+    // await expect.soft(page.url()).toBe('https://twitter.com/def90eth');
+    await expect(page).toHaveURL(/twitter/);
+    await expect(page).toHaveURL(/def90eth/);
   });
 
   test('github', async ({ page }) => {

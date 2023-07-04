@@ -43,7 +43,7 @@
             "label": "カテゴリー",
             "list": true,
             "options": [
-              { "label": "ポエム", "value": "poem" },
+              { "label": "Poem", "value": "poem" },
               { "label": "Python", "value": "python" },
               { "label": "JavaScript", "value": "javascript" },
               { "label": "TypeScript", "value": "typescript" },
