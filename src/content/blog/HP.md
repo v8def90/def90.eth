@@ -28,7 +28,7 @@ qiitaやzenn, noteでAccount作ってBlogを書いてもよかったんですが
 
 3\. 最近はJavaScript/Typescriptのフレームワークで実装していることが多いのですが、管理用のライブラリが豊富で有用なものが多いです。今後積極的に使っていきたいものについて、今回紹介したいと思います。
 
-### システムアーキテクチャ
+## システムアーキテクチャ
 
 ***
 
@@ -54,9 +54,9 @@ https://tina.io/
 
 当然これはDXに逆行している内容だと思うのですが、業務の標準化を進められる企業なんて一握りでしょうし、落とし所としてはありのような気がしています。
 
-\- Backend: Github(TinaCMS)
+* Backend: Github(TinaCMS)
 
-### Astroについて
+## Astroについて
 
 ***
 
@@ -78,11 +78,7 @@ Lighthouseでレポートも作成してみましたが、割りといいスコ�
 
 Astroのいいところをこれまで語ってきましたが、当然不得意な分野も存在します。公式も宣言しているのが面白いところです。
 
->  *Astro was designed for building content-rich websites.* This includes most marketing sites, publishing sites, documentation sites, blogs, portfolios, and some ecommerce sites.
-
->  By contrast, most modern web frameworks are designed for building \_web applications\_. These frameworks work best for building more complex, application-like experiences in the browser: logged-in admin dashboards, inboxes, social networks, todo lists, and even native-like applications like \[Figma]\(https://figma.com/) and \[Ping]\(https://ping.gg/).
-
->  If your project falls into the second “application” camp, Astro might not be the right choice for your project… **and that’s okay!** Check out \[Next.js]\(https://nextjs.org/) for a more application-focused alternative to Astro.
+> *Astro was designed for building content-rich websites.* This includes most marketing sites, publishing sites, documentation sites, blogs, portfolios, and some ecommerce sites.By contrast, most modern web frameworks are designed for building \_web applications\_. These frameworks work best for building more complex, application-like experiences in the browser: logged-in admin dashboards, inboxes, social networks, todo lists, and even native-like applications like \[Figma]\(https://figma.com/) and \[Ping]\(https://ping.gg/).If your project falls into the second “application” camp, Astro might not be the right choice for your project… **and that’s okay!** Check out \[Next.js]\(https://nextjs.org/) for a more application-focused alternative to Astro.
 
 `(意訳)Astroは静的なコンテンツ(HPやBlog, Portfolioなど)を構築するために、設計されています。世間一般的なWebフレームワークは、アプリケーション(FigmaとかPing)を構築するために設定されていて、あなたがアプリケーションを構築したいのであれば、Next.jsをチェックしてみてください。`
 
@@ -90,11 +86,10 @@ Astroのいいところをこれまで語ってきましたが、当然不得意
 
 なお、今回はAstro v2がリリースされていたので、versionは2.5.6を使用しています。CSSはTailwindCSSで構築しています。個人的なこだわりでダークモードも導入しています。
 
-\- Frontend: Astro v2(一部Reactを使用)
+* Frontend: Astro v2(一部Reactを使用)
+* CSS: TailwindCSS
 
-\- CSS: TailwindCSS
-
-### 管理用ライブラリについて
+## 管理用ライブラリについて
 
 ***
 
