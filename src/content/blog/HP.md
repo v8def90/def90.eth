@@ -16,13 +16,11 @@ qiitaやzenn, noteでAccount作ってBlogを書いてもよかったんですが
 
 最初の投稿は、せっかくなのでこのBlog自体について書きたいと思います。このBlogを作成するにあたって、検討したことは以下の通りです。
 
-\- Concept
+### Concept
 
-&#x9;1\. システムアーキテクチャ ~できる限りランニングコストを0に~
-
-&#x9;2\. 自分が触ったことのないスキルセットを使ってみる
-
-&#x9;3\. 管理系運用系のライブラリについて、自分なりのベストプラクティスを模索してみる
+1. システムアーキテクチャ ~できる限りランニングコストを0に~
+2. 自分が触ったことのないスキルセットを使ってみる
+3. 管理系運用系のライブラリについて、自分なりのベストプラクティスを模索してみる
 
 1\. これについては重要です。ランニングコストが高いと、実際に顧客に提案するにあたってランニングコストを気にする人は多いと思うので、できるでけ安く。ただし、エンジニアでなくても運用できるようにというのは、気にしたポイントです。
 
@@ -30,9 +28,9 @@ qiitaやzenn, noteでAccount作ってBlogを書いてもよかったんですが
 
 3\. 最近はJavaScript/Typescriptのフレームワークで実装していることが多いのですが、管理用のライブラリが豊富で有用なものが多いです。今後積極的に使っていきたいものについて、今回紹介したいと思います。
 
-\### システムアーキテクチャ
+### システムアーキテクチャ
 
-\---
+***
 
 HPサーバを構築し、Blogを書いていくとなるとランニング費用に直結してくるのは、DBの有無だと思います。DBを使用しないだけで月々のランニング費用は大きく変わってきます。
 
@@ -58,9 +56,9 @@ https://tina.io/
 
 \- Backend: Github(TinaCMS)
 
-\## Astroについて
+### Astroについて
 
-\---
+***
 
 Astroは最近気になっていたフレームワークで、今回面白いなと思って採用してみました。
 
@@ -80,15 +78,13 @@ Lighthouseでレポートも作成してみましたが、割りといいスコ�
 
 Astroのいいところをこれまで語ってきましたが、当然不得意な分野も存在します。公式も宣言しているのが面白いところです。
 
-\> \*\*Astro was designed for building content-rich websites.\*\* This includes most marketing sites, publishing sites, documentation sites, blogs, portfolios, and some ecommerce sites.
+>  *Astro was designed for building content-rich websites.* This includes most marketing sites, publishing sites, documentation sites, blogs, portfolios, and some ecommerce sites.
 
-\> By contrast, most modern web frameworks are designed for building \_web applications\_. These frameworks work best for building more complex, application-like experiences in the browser: logged-in admin dashboards, inboxes, social networks, todo lists, and even native-like applications like \[Figma]\(https://figma.com/) and \[Ping]\(https://ping.gg/).
+>  By contrast, most modern web frameworks are designed for building \_web applications\_. These frameworks work best for building more complex, application-like experiences in the browser: logged-in admin dashboards, inboxes, social networks, todo lists, and even native-like applications like \[Figma]\(https://figma.com/) and \[Ping]\(https://ping.gg/).
 
-\> If your project falls into the second “application” camp, Astro might not be the right choice for your project… \*\*and that’s okay!\*\* Check out \[Next.js]\(https://nextjs.org/) for a more application-focused alternative to Astro.
+>  If your project falls into the second “application” camp, Astro might not be the right choice for your project… **and that’s okay!** Check out \[Next.js]\(https://nextjs.org/) for a more application-focused alternative to Astro.
 
-(意訳)Astroは静的なコンテンツ(HPやBlog, Portfolioなど)を構築するために、設計されています。
-
-世間一般的なWebフレームワークは、アプリケーション(FigmaとかPing)を構築するために設定されていて、あなたがアプリケーションを構築したいのであれば、Next.jsをチェックしてみてください。
+`(意訳)Astroは静的なコンテンツ(HPやBlog, Portfolioなど)を構築するために、設計されています。世間一般的なWebフレームワークは、アプリケーション(FigmaとかPing)を構築するために設定されていて、あなたがアプリケーションを構築したいのであれば、Next.jsをチェックしてみてください。`
 
 今回は、BlogとPortfolioがメインなのでAstroを採用しましたが、業務アプリを構築するような場合にはNext.jsの方がいいみたいです。(とAstro公式が言ってます)
 
@@ -98,49 +94,37 @@ Astroのいいところをこれまで語ってきましたが、当然不得意
 
 \- CSS: TailwindCSS
 
-\### 管理用ライブラリについて
+### 管理用ライブラリについて
 
-\---
+***
 
 最近はTypescript/Next.jsすることが多かったのでこの機会に、開発をサポートするライブラリについて自分の中で整理しつつ、設定なども細かく見てみました。ぶっちゃけ、ここに一番時間がかかっていると思います。
 
 最終的にやりたいことは以下の通りです。
 
-1\. commitを発行する前に各種リンター、フォーマッターでチェック、整形を行う。
-
-2\. pushする前にテストツールでe2eテストを実行し、エラーがある状態でのリモートリポジトリへのpushをブロックする。
+1. commitを発行する前に各種リンター、フォーマッターでチェック、整形を行う。
+2. pushする前にテストツールでe2eテストを実行し、エラーがある状態でのリモートリポジトリへのpushをブロックする。
 
 自分で設定しておきながら、1.および2.によく引っかかってました。1, 2ともにgitコマンドをhookするために、huskyを使ってます。1.の場合はさらにlint-stagedを使って各種リンターを動かしています。
 
 今回の構成ライブラリは以下の通りです。個人的におぉって思ったのは、Playwrightです。QAエンジニアになろうかな。
 
-\- ESLint
+* ESLint
+  * JavaScriptのリンター、デフォルトではチェックしてくれないのでextendsでいくつか追加しています。
+* StyleLint
+  * CSSのリンター
+* Prettier
+  * フォーマッター、ファイルのフォーマットをしてくれる。
+* Lint-Staged
+  * gitでStagingされているファイルに対して、リンターやフォーマッターを実行してくれる。
+* Husky
+  * GitコマンドをHookして任意のプログラムを実行してくれます。ここで、Lint-stagedやpackage.jsonで定義しているscript(playwright)を実行させてます。
+* Playwright
+  * e2eテストツール。
 
-&#x9;\- JavaScriptのリンター、デフォルトではチェックしてくれないのでextendsでいくつか追加しています。
+### ソース
 
-\- StyleLint
-
-&#x9;\- CSSのリンター
-
-\- Prettier
-
-&#x9;\- フォーマッター、ファイルのフォーマットをしてくれる。
-
-\- Lint-Staged
-
-&#x9;\- gitでStagingされているファイルに対して、リンターやフォーマッターを実行してくれる。
-
-\- Husky
-
-&#x9;\- GitコマンドをHookして任意のプログラムを実行してくれます。ここで、Lint-stagedやpackage.jsonで定義しているscript(playwright)を実行させてます。
-
-\- Playwright
-
-&#x9;\- e2eテストツール。
-
-\### ソース
-
-\---
+***
 
 以下に公開しております。
 
