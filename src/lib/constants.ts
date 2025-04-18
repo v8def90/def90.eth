@@ -1,7 +1,7 @@
 export const siteMeta = {
   siteTitle: 'Calm/LightYears',
   siteDesc: 'calmly for many light years',
-  siteUrl: 'https://def90eth.vercel.app/',
+  siteUrl: 'https://def90.net',
   siteLocale: 'ja_JP',
   siteType: 'website',
   siteIcon: '/Calm.png',
