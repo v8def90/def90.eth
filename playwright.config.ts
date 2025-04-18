@@ -1,3 +1,4 @@
+import process from 'node:process';
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -14,10 +15,13 @@ export default defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
+  // eslint-disable-next-line no-undef
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
+  // eslint-disable-next-line no-undef
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
+  // eslint-disable-next-line no-undef
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
@@ -27,35 +31,35 @@ export default defineConfig({
     baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'] }
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { ...devices['Desktop Firefox'] }
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { ...devices['Desktop Safari'] }
     },
 
     /* Test against mobile viewports. */
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
+      use: { ...devices['Pixel 5'] }
     },
     {
       name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    },
+      use: { ...devices['iPhone 12'] }
+    }
 
     /* Test against branded browsers. */
     // {
@@ -70,8 +74,8 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npm run start',
+    command: 'pnpm dev',
     url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-  },
+    reuseExistingServer: !process.env.CI
+  }
 });

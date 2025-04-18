@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn build
-yarn e2e:all --reporter=list
+pnpm build
+pnpm e2e:all --reporter=list

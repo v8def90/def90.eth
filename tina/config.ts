@@ -15,7 +15,6 @@ export default defineConfig({
   clientId: process.env.CLIENTID, // Get this from tina.io
   // eslint-disable-next-line no-undef
   token: process.env.TOKEN, // Get this from tina.io
-
   build: {
     outputFolder: 'admin',
     publicFolder: 'public'
@@ -26,7 +25,6 @@ export default defineConfig({
       publicFolder: 'public'
     }
   },
-
   schema: {
     collections: [
       {

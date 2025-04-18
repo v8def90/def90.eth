@@ -13,7 +13,7 @@
     "e2e:all": "playwright test",
     "e2e:chromium": "playwright test --project=chromium",
     "prepare": "is-ci || husky install",
-    "format": "prettier --write **/*.{css,ts,tsx,astro}",
+    "format": "prettier --write --plugin=prettier-plugin-astro \"**/*.{css,ts,tsx,astro}\"",
     "lint:js": "eslint \"./src/**/*.{js,jsx,ts,tsx,astro}\" --fix --ignore-path .gitignore",
     "lint:style": "stylelint \"./src/**/*.{css,scss,astro}\" --fix --ignore-path .gitignore"
   },
@@ -72,20 +72,20 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
+      "prettier --write --plugin=prettier-plugin-astro",
       "eslint --cache --fix"
     ],
     "*.astro": [
-      "prettier --write",
+      "prettier --write --plugin=prettier-plugin-astro",
       "stylelint --fix",
       "eslint --cache --fix"
     ],
     "*.{css,scss}": [
-      "prettier --write",
+      "prettier --write --plugin=prettier-plugin-astro",
       "stylelint --fix"
     ],
     "*.json": [
-      "prettier --write"
+      "prettier --write --plugin=prettier-plugin-astro"
     ]
   }
 }
