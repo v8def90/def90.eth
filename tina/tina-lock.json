@@ -100,18 +100,6 @@
       "createDocument": "create",
       "updateDocument": "update"
     },
-    "Post": {
-      "type": "Post",
-      "resolveType": "collectionDocument",
-      "collection": "post",
-      "createPost": "create",
-      "updatePost": "update"
-    },
-    "PostConnection": {
-      "type": "PostConnection",
-      "resolveType": "collectionDocumentList",
-      "collection": "post"
-    },
     "Blog": {
       "type": "Blog",
       "resolveType": "collectionDocument",
