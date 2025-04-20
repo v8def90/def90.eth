@@ -20,6 +20,8 @@ const {
     url: { prev, next }
   }
 } = Astro.props;
+
+const posts = data as any[];
 ---
 
 <Layout pageTitle="Blog Posts" description="ブログの記事一覧">
@@ -27,7 +29,7 @@ const {
 
   <div class="grid grid-cols-2 gap-5">
     {
-      data.map((post) => {
+      posts.map((post) => {
         const {
           slug,
           data: { image, title }

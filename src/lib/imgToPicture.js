@@ -1,4 +1,4 @@
-import { getPicture } from '@astrojs/image';
+import { getImage } from 'astro:assets';
 import { h } from 'hastscript';
 import { getPlaiceholder } from 'plaiceholder';
 import rehypeParse from 'rehype-parse';
@@ -6,9 +6,8 @@ import rehypeStringify from 'rehype-stringify';
 import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
 
-const pictureDefault = {
+const imageDefault = {
   widths: [640, 750, 828, 1080, 1200, 1920],
-  sizes: '(min-width: 720px) 720px, 100vw',
   formats: ['webp', 'jpeg']
 };
 
@@ -39,20 +38,47 @@ export default async function imgToPicture(html) {
     const { img } = await getPlaiceholder(src);
     const { width, height } = img;
 
-    // 取得した情報をもとに、getPictureでpictureの構成要素を取得
-    const pictureData = await getPicture({
-      ...img,
-      ...pictureDefault,
-      aspectRatio: `${width}:${height}`
+    // 生成するソースフォーマットの準備
+    const sources = [];
+
+    // 各フォーマットで画像を生成
+    for (const format of imageDefault.formats) {
+      const srcSet = [];
+
+      // 各幅で画像を生成
+      for (const width of imageDefault.widths) {
+        const imageData = await getImage({
+          src: img.src,
+          width: width,
+          height: Math.round(height * (width / img.width)),
+          format: format
+        });
+
+        srcSet.push(`${imageData.src} ${width}w`);
+      }
+
+      sources.push({
+        type: `image/${format}`,
+        srcset: srcSet.join(', '),
+        sizes: '(min-width: 720px) 720px, 100vw'
+      });
+    }
+
+    // 標準画像のデータを取得
+    const imageData = await getImage({
+      src: img.src,
+      width: width,
+      height: height,
+      format: 'jpeg'
     });
 
     // 置換用のnodeの作成
-    const srcNodes = pictureData.sources.map((source) => {
+    const srcNodes = sources.map((source) => {
       const e = h('source', { ...source });
       return e;
     });
 
-    const imgNode = h('img', { ...pictureData.image, alt });
+    const imgNode = h('img', { src: imageData.src, width, height, alt });
 
     const pictureNode = h('picture', [...srcNodes, imgNode]);
 

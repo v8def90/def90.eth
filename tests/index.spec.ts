@@ -12,12 +12,12 @@ test.describe('Home page', () => {
 
   test('Blog Title link', async ({ page }) => {
     await page.getByRole('link', { name: 'Calm/LightYears' }).click();
-    await expect(page.url()).toBe('http://localhost:3000/');
+    await expect(page.url()).toBe('http://localhost:4321/');
   });
 
   test('Home link', async ({ page }) => {
     await page.getByRole('link', { name: 'Home' }).click();
-    await expect(page.url()).toBe('http://localhost:3000/');
+    await expect(page.url()).toBe('http://localhost:4321/');
   });
 
   test('Blog link', async ({ page }) => {

@@ -12,7 +12,9 @@ export async function getStaticPaths({ paginate }) {
     return data.draft === false;
   });
   const sortedBlogPosts = blogPosts.sort((a, b) => compareDesc(a.data.pubDate, b.data.pubDate));
-  return categories.map((category) => {
+
+  // flatMap()を使用してページネーションの結果を平坦化
+  return categories.flatMap((category) => {
     const { categorySlug, categoryName } = category;
 
     const filteredPosts = sortedBlogPosts.filter((post) => {

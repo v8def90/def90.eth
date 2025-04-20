@@ -1,11 +1,10 @@
-import image from '@astrojs/image';
 import node from '@astrojs/node';
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
-import { defineConfig } from 'astro/config';
+import { defineConfig, squooshImageService } from 'astro/config';
 import { loadEnv } from 'vite';
 import { siteMeta } from './src/lib/constants';
 const { siteUrl } = siteMeta;
@@ -16,19 +15,14 @@ const env = loadEnv('production', process.cwd());
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,
-  integrations: [
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp'
-    }),
-    prefetch(),
-    sitemap(),
-    tailwind(),
-    react()
-  ],
-  // output: "server",
+  output: 'static',
+  integrations: [prefetch(), sitemap(), tailwind(), react()],
   adapter: node({
     mode: 'standalone'
   }),
+  image: {
+    service: squooshImageService()
+  },
   vite: {
     plugins: [
       // Put the Sentry vite plugin after all other plugins
