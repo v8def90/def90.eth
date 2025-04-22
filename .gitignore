@@ -27,3 +27,7 @@ node_modules
 /playwright-report/
 /playwright/.cache/
 tests/index.spec.ts-snapshots/*
+
+# Cursor
+.cursorignore
+.cursorrules

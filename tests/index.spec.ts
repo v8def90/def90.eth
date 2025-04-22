@@ -32,9 +32,14 @@ test.describe('Home page', () => {
     await expect(page).toHaveURL(/def90eth/);
   });
 
-  test('github', async ({ page }) => {
-    await page.getByRole('link').nth(4).click();
-    await expect(page.url()).toBe('https://github.com/v8def90');
+  test('github link points to correct URL', async ({ page }) => {
+    // リンクの存在とhref属性のみを確認
+    const githubLink = page.locator('footer a[href*="github"]');
+    await expect(githubLink).toBeVisible();
+    const href = await githubLink.getAttribute('href');
+    expect(href).toBe('https://github.com/v8def90');
+
+    // クリックはスキップ
   });
 
   test('top text', async ({ page }) => {

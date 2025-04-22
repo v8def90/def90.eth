@@ -1,5 +1,4 @@
 import node from '@astrojs/node';
-import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
@@ -16,7 +15,7 @@ const env = loadEnv('production', process.cwd());
 export default defineConfig({
   site: siteUrl,
   output: 'static',
-  integrations: [prefetch(), sitemap(), tailwind(), react()],
+  integrations: [sitemap(), tailwind(), react()],
   adapter: node({
     mode: 'standalone'
   }),
