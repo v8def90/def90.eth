@@ -57,9 +57,10 @@ const {
 const pubDateISO = formatISO(pubDate);
 const pubDateJA = format(pubDate, 'yyyy/MM/dd');
 
-const html = import.meta.env.PROD
-  ? // @ts-ignore
-    markdownToHtml.default(body, {
+// Astro v4ではESMモジュールの扱いが厳格になり、.defaultプロパティを使用する必要があります
+const markdownToHtmlModule = markdownToHtml as unknown as { default?: typeof markdownToHtml };
+const html = markdownToHtmlModule.default
+  ? markdownToHtmlModule.default(body, {
       embedOrigin: 'https://embed.zenn.studio'
     })
   : markdownToHtml(body, {

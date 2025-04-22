@@ -4,7 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
-import { defineConfig, squooshImageService } from 'astro/config';
+import { defineConfig, sharpImageService } from 'astro/config';
 import { loadEnv } from 'vite';
 import { siteMeta } from './src/lib/constants';
 const { siteUrl } = siteMeta;
@@ -21,7 +21,7 @@ export default defineConfig({
     mode: 'standalone'
   }),
   image: {
-    service: squooshImageService()
+    service: sharpImageService()
   },
   vite: {
     plugins: [
