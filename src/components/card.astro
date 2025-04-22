@@ -1,12 +1,20 @@
 ---
 import Custompicture from '@components/custompicture.astro';
 
-const { url, src, alt = '', title } = Astro.props;
+const { url, src, title } = Astro.props;
 ---
 
-<article class="card">
-  <a class="text-inherit no-underline hover:underline" rel="prefetch" href={url}>
-    <Custompicture src={src} alt={alt} />
-    <h2 class="text-left text-base font-normal">{title}</h2>
-  </a>
-</article>
+<a class="text-inherit no-underline hover:underline" data-astro-prefetch href={url}>
+  <div class="flex flex-col gap-2 overflow-hidden rounded-lg">
+    {
+      typeof src === 'string' ? (
+        <Custompicture src={src} alt={title} />
+      ) : (
+        <Custompicture {...src} alt={title} />
+      )
+    }
+    <div>
+      <h2 class="m-auto text-xl">{title}</h2>
+    </div>
+  </div>
+</a>

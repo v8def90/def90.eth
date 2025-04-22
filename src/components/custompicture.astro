@@ -4,13 +4,29 @@ import { Image } from 'astro:assets';
 import { getPlaiceholder } from 'plaiceholder';
 
 const props = Astro.props;
-
 const { src: imgsrc, alt = '' } = props;
-const {
-  img: { width, height }
-} = await getPlaiceholder(imgsrc);
 
-// pictureDefaultの設定は不要になるため削除
+// imgsrcが文字列の場合のみgetPlaiceholderを使用
+let width, height;
+if (typeof imgsrc === 'string' && imgsrc.startsWith('/')) {
+  // ローカルの静的ファイルパスの場合、直接サイズを指定
+  width = props.width || 800;
+  height = props.height || 600;
+} else if (typeof imgsrc === 'string') {
+  try {
+    const { img } = await getPlaiceholder(imgsrc);
+    width = img.width;
+    height = img.height;
+  } catch (e) {
+    // エラーが発生した場合、デフォルトサイズを使用
+    width = props.width || 800;
+    height = props.height || 600;
+  }
+} else {
+  // imgsrcがオブジェクトの場合、そのままのプロパティを使用
+  width = props.width;
+  height = props.height;
+}
 ---
 
 <Image src={imgsrc} alt={alt} width={width} height={height} {...props} />

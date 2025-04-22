@@ -15,6 +15,7 @@ const env = loadEnv('production', process.cwd());
 export default defineConfig({
   site: siteUrl,
   output: 'static',
+  prefetch: true,
   integrations: [sitemap(), tailwind(), react()],
   adapter: node({
     mode: 'standalone'

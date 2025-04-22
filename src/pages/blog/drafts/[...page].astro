@@ -3,10 +3,11 @@ import Card from '@components/card.astro';
 import Pagination from '@components/pagination.astro';
 import Layout from '@layouts/layout.astro';
 
+import type { PaginateFunction } from 'astro';
 import { getCollection } from 'astro:content';
 import { compareDesc } from 'date-fns';
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const blogPosts = await getCollection('blog', ({ data }) => {
     return data.draft === true;
   });

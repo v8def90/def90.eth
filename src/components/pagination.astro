@@ -5,7 +5,7 @@ const { prev, next, prevTitle = '前へ', nextTitle = '次へ' } = Astro.props;
 <div class="flex-spacebetween mt-10 flex flex-wrap items-center justify-between gap-4">
   {
     prev ? (
-      <a class="text-inherit no-underline hover:underline" rel="prefetch" href={prev}>
+      <a class="text-inherit no-underline hover:underline" data-astro-prefetch href={prev}>
         ← {prevTitle}
       </a>
     ) : (
@@ -14,7 +14,7 @@ const { prev, next, prevTitle = '前へ', nextTitle = '次へ' } = Astro.props;
   }
   {
     next ? (
-      <a class="text-inherit no-underline hover:underline" rel="prefetch" href={next}>
+      <a class="text-inherit no-underline hover:underline" data-astro-prefetch href={next}>
         {nextTitle} →
       </a>
     ) : (

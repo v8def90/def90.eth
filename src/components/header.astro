@@ -4,13 +4,17 @@ import ThemeToggleButton from '@components/ThemeToggleButton';
 
 <header class="py-6">
   <nav class="flex flex-wrap items-center justify-between gap-4">
-    <a class="flex gap-2 text-lg font-bold text-inherit no-underline hover:underline" rel="prefetch" href="/">
+    <a
+      class="flex gap-2 text-lg font-bold text-inherit no-underline hover:underline"
+      data-astro-prefetch
+      href="/"
+    >
       <img src="/logo.svg" alt="" width="28" height="28" />
       Tech Flow.
     </a>
     <ul class="flex gap-4">
-      <li><a class="text-inherit no-underline hover:underline" rel="prefetch" href="/">Home</a></li>
-      <li><a class="text-inherit no-underline hover:underline" rel="prefetch" href="/blog">Blog</a></li>
+      <li><a class="text-inherit no-underline hover:underline" data-astro-prefetch href="/">Home</a></li>
+      <li><a class="text-inherit no-underline hover:underline" data-astro-prefetch href="/blog">Blog</a></li>
     </ul>
     <ThemeToggleButton />
   </nav>
