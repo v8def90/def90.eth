@@ -9,9 +9,8 @@ module.exports = {
       'stylelint-prettier',
     ],
     extends: ['stylelint-config-recess-order'],
-    processors: ["stylelint-processor-astro"],
     rules: {
-      'prettier/prettier': [true, { parser: 'css' }], // この行を変更
+      'prettier/prettier': [true, { parser: 'css' }],
       'plugin/declaration-block-no-ignored-properties': true,
       'plugin/no-unsupported-browser-features': [
         true,
@@ -26,7 +25,6 @@ module.exports = {
     overrides: [
         {
           files: ['**/*.astro'],
-          processors: ['stylelint-processor-astro'],
         },
       ],
   }
