@@ -80,7 +80,8 @@ const convertedHTML = imgToPicture(html);
       <ul class="flex flex-wrap gap-3">
         {
           category.map((categorySlug) => {
-            const categoryName = categories.find((cat) => cat.categorySlug === categorySlug).categoryName;
+            const categoryName =
+              categories.find((cat) => cat.categorySlug === categorySlug)?.categoryName || categorySlug;
             return <CategoryButton categoryName={categoryName} categorySlug={categorySlug} />;
           })
         }
