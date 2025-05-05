@@ -14,19 +14,21 @@ export const Header = () => {
             <img src="/Calm.png" alt="" width="28" height="28" />
             {siteMeta.siteTitle}
           </a>
-          <ul className="flex gap-4">
-            <li>
-              <a className="text-inherit no-underline hover:underline" rel="prefetch" href="/">
-                Home
-              </a>
-            </li>
-            <li>
-              <a className="text-inherit no-underline hover:underline" rel="prefetch" href="/blog">
-                Blog
-              </a>
-            </li>
+          <div className="flex items-center gap-4">
+            <ul className="flex gap-4">
+              <li>
+                <a className="text-inherit no-underline hover:underline" rel="prefetch" href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a className="text-inherit no-underline hover:underline" rel="prefetch" href="/blog">
+                  Blog
+                </a>
+              </li>
+            </ul>
             <ThemeToggleButton />
-          </ul>
+          </div>
         </nav>
       </header>
     </>
