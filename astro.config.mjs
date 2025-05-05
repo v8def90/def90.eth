@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { defineConfig, sharpImageService } from 'astro/config';
+import icon from 'astro-icon';
 import { loadEnv } from 'vite';
 import { siteMeta } from './src/lib/constants';
 const { siteUrl } = siteMeta;
@@ -16,7 +17,7 @@ export default defineConfig({
   site: siteUrl,
   output: 'static',
   prefetch: true,
-  integrations: [sitemap(), tailwind(), react()],
+  integrations: [sitemap(), tailwind(), react(), icon()],
   adapter: node({
     mode: 'standalone'
   }),
