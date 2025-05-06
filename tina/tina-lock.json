@@ -1,6 +1,6 @@
 {
   "schema": {
-    "version": { "fullVersion": "1.4.10", "major": "1", "minor": "4", "patch": "10" },
+    "version": { "fullVersion": "1.5.16", "major": "1", "minor": "5", "patch": "16" },
     "meta": { "flags": ["experimentalData"] },
     "collections": [
       {
@@ -9,7 +9,6 @@
         "path": "src/content/blog",
         "format": "md",
         "ui": { "filename": { "readonly": false } },
-        "defaultItem": { "namespace": ["blog", "defaultItem"] },
         "fields": [
           {
             "type": "string",
@@ -18,7 +17,9 @@
             "ui": {},
             "isTitle": true,
             "required": true,
-            "namespace": ["blog", "title"]
+            "namespace": ["blog", "title"],
+            "searchable": true,
+            "uid": false
           },
           {
             "type": "string",
@@ -26,7 +27,9 @@
             "label": "スラッグ",
             "ui": {},
             "required": true,
-            "namespace": ["blog", "slug"]
+            "namespace": ["blog", "slug"],
+            "searchable": true,
+            "uid": false
           },
           {
             "type": "datetime",
@@ -34,9 +37,18 @@
             "label": "投稿日",
             "ui": { "component": "date", "dateFormat": "YYYY-MM-DD" },
             "required": true,
-            "namespace": ["blog", "pubDate"]
+            "namespace": ["blog", "pubDate"],
+            "searchable": true,
+            "uid": false
           },
-          { "type": "image", "name": "image", "label": "画像", "namespace": ["blog", "image"] },
+          {
+            "type": "image",
+            "name": "image",
+            "label": "画像",
+            "namespace": ["blog", "image"],
+            "searchable": false,
+            "uid": false
+          },
           {
             "type": "string",
             "name": "category",
@@ -53,7 +65,9 @@
               { "label": "AI", "value": "ai" },
               { "label": "AWS", "value": "aws" }
             ],
-            "namespace": ["blog", "category"]
+            "namespace": ["blog", "category"],
+            "searchable": true,
+            "uid": false
           },
           {
             "type": "rich-text",
@@ -63,7 +77,9 @@
             "isBody": true,
             "required": true,
             "namespace": ["blog", "body"],
-            "parser": { "type": "markdown" }
+            "searchable": true,
+            "parser": { "type": "markdown" },
+            "uid": false
           },
           {
             "type": "string",
@@ -71,7 +87,9 @@
             "label": "説明",
             "ui": { "component": "textarea" },
             "required": true,
-            "namespace": ["blog", "description"]
+            "namespace": ["blog", "description"],
+            "searchable": true,
+            "uid": false
           },
           {
             "name": "draft",
@@ -79,7 +97,9 @@
             "type": "boolean",
             "required": true,
             "description": "If this is checked the post will not be published",
-            "namespace": ["blog", "draft"]
+            "namespace": ["blog", "draft"],
+            "searchable": true,
+            "uid": false
           }
         ],
         "namespace": ["blog"]
@@ -160,6 +180,12 @@
               "kind": "NonNullType",
               "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
             }
+          },
+          {
+            "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "hasReferences" },
+            "arguments": [],
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
           },
           {
             "kind": "FieldDefinition",
@@ -1171,6 +1197,29 @@
                 "type": {
                   "kind": "NonNullType",
                   "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "DocumentMutation" } }
+                }
+              }
+            ],
+            "type": {
+              "kind": "NonNullType",
+              "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "DocumentNode" } }
+            }
+          },
+          {
+            "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "createFolder" },
+            "arguments": [
+              {
+                "kind": "InputValueDefinition",
+                "name": { "kind": "Name", "value": "collection" },
+                "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+              },
+              {
+                "kind": "InputValueDefinition",
+                "name": { "kind": "Name", "value": "relativePath" },
+                "type": {
+                  "kind": "NonNullType",
+                  "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
                 }
               }
             ],

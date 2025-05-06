@@ -7,14 +7,14 @@ const tinacmsCategories = categories.map((category) => {
 
 // Your hosting provider likely exposes this as an environment variable
 // eslint-disable-next-line no-undef
-const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || 'main';
+const branch = process.env?.TINA_BRANCH || process.env?.HEAD || process.env?.VERCEL_GIT_COMMIT_REF || 'main';
 
 export default defineConfig({
   branch,
   // eslint-disable-next-line no-undef
-  clientId: process.env.CLIENTID, // Get this from tina.io
+  clientId: (process.env?.TINA_CLIENT_ID || process.env?.CLIENTID) as string | null, // Get this from tina.io
   // eslint-disable-next-line no-undef
-  token: process.env.TOKEN, // Get this from tina.io
+  token: (process.env?.TINA_TOKEN || process.env?.TOKEN) as string | null, // Get this from tina.io
   build: {
     outputFolder: 'admin',
     publicFolder: 'public'
@@ -86,7 +86,12 @@ export default defineConfig({
             ui: {
               component: 'date',
               dateFormat: 'YYYY-MM-DD',
-              parse: (value) => value && value.format('YYYY-MM-DD')
+              parse: (value) => {
+                if (typeof value === 'string') {
+                  return value;
+                }
+                return value?.format ? value.format('YYYY-MM-DD') : '';
+              }
             },
             required: true
           },
@@ -108,9 +113,10 @@ export default defineConfig({
             label: '記事本文',
             ui: {
               validate: (value) => {
-                if (value?.length < 1) {
+                if (!value || !value.children || value.children.length === 0) {
                   return 'body require!';
                 }
+                return undefined;
               }
             },
             isBody: true,
