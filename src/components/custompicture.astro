@@ -1,27 +1,70 @@
 ---
 // @ts-nocheck
 import { Image } from 'astro:assets';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { getPlaiceholder } from 'plaiceholder';
 
 const props = Astro.props;
 const { src: imgsrc, alt = '' } = props;
 
+// publicディレクトリからの画像データを取得する関数
+async function getImageBuffer(src) {
+  try {
+    if (!src || typeof src !== 'string') {
+      throw new Error('Invalid source provided');
+    }
+
+    // 相対パスを処理（/から始まるパスはpublicフォルダのルートと見なす）
+    let imagePath;
+    if (src.startsWith('/')) {
+      // 先頭の/を削除してpublicディレクトリと結合
+      imagePath = path.join('public', src.slice(1));
+    } else {
+      throw new Error('Image path must start with /');
+    }
+
+    // ファイルが存在するか確認
+    try {
+      await fs.access(imagePath);
+    } catch {
+      throw new Error(`Image file not found: ${imagePath}`);
+    }
+
+    // ファイルをBufferとして読み込む
+    const buffer = await fs.readFile(imagePath);
+    return buffer;
+  } catch (error) {
+    console.error('Error loading image:', error);
+    return null;
+  }
+}
+
 // imgsrcが文字列の場合のみgetPlaiceholderを使用
 let width, height;
 if (typeof imgsrc === 'string' && imgsrc.startsWith('/')) {
-  // ローカルの静的ファイルパスの場合、直接サイズを指定
-  width = props.width || 800;
-  height = props.height || 600;
-} else if (typeof imgsrc === 'string') {
   try {
-    const { img } = await getPlaiceholder(imgsrc);
-    width = img.width;
-    height = img.height;
+    // /から始まるものはpublicディレクトリの画像と見なす
+    const imageBuffer = await getImageBuffer(imgsrc);
+    if (imageBuffer) {
+      const { metadata } = await getPlaiceholder(imageBuffer);
+      width = metadata.width;
+      height = metadata.height;
+    } else {
+      // バッファが取得できなかった場合、デフォルトサイズを使用
+      width = props.width || 800;
+      height = props.height || 600;
+    }
   } catch (e) {
+    console.error('Error getting placeholder:', e);
     // エラーが発生した場合、デフォルトサイズを使用
     width = props.width || 800;
     height = props.height || 600;
   }
+} else if (typeof imgsrc === 'string') {
+  // 外部URLやサポートされていないパスの場合はデフォルト値を使用
+  width = props.width || 800;
+  height = props.height || 600;
 } else {
   // imgsrcがオブジェクトの場合、そのままのプロパティを使用
   width = props.width;
