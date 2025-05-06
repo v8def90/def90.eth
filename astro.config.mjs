@@ -31,13 +31,17 @@ export default defineConfig({
         org: 'personal-a0p',
         project: 'def90eth',
         // Specify the directory containing build artifacts
-        include: './dist',
+        sourcemaps: {
+          assets: './dist/**'
+        },
         // Auth tokens can be obtained from https://sentry.io/settings/account/api/auth-tokens/
         // and needs the `project:releases` and `org:read` scopes
         authToken: env.SENTRY_AUTH_TOKEN
 
         // Optionally uncomment the line below to override automatic release name detection
-        // release: env.RELEASE,
+        // release: {
+        //   name: env.RELEASE
+        // }
       })
     ],
 
