@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Tailwind CSSのダークモード設定 */
+  /* 既存の設定をテーマ変数として移行 */
+  /* タイポグラフィのダークモード設定 */
+  --typography-dark-color: var(--color-gray-200);
+}
+
+/* ダークモード設定 - クラス名ベースの切替を設定 */
+@variant dark (&:where(.dark, .dark *));
+
+/* カスタムユーティリティの定義 */
+@utility custom-prose {
+  @apply prose prose-lg dark:prose-invert mx-auto;
+  max-width: 65ch;
+
+  /* ダークモードでのタイポグラフィスタイル */
+  &:where(.dark, .dark *) {
+    --tw-prose-body: var(--typography-dark-color);
+    --tw-prose-headings: var(--typography-dark-color);
+    --tw-prose-lead: var(--typography-dark-color);
+    --tw-prose-links: var(--typography-dark-color);
+    --tw-prose-bold: var(--typography-dark-color);
+    --tw-prose-counters: var(--typography-dark-color);
+    --tw-prose-bullets: var(--typography-dark-color);
+    --tw-prose-hr: var(--color-gray-700);
+    --tw-prose-quotes: var(--typography-dark-color);
+    --tw-prose-quote-borders: var(--color-gray-700);
+    --tw-prose-captions: var(--color-gray-400);
+    --tw-prose-code: var(--typography-dark-color);
+    --tw-prose-pre-code: var(--color-gray-300);
+    --tw-prose-pre-bg: var(--color-gray-900);
+    --tw-prose-th-borders: var(--color-gray-700);
+    --tw-prose-td-borders: var(--color-gray-700);
+  }
+}

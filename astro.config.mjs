@@ -1,10 +1,10 @@
 import node from '@astrojs/node';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { defineConfig, sharpImageService } from 'astro/config';
 import icon from 'astro-icon';
+import tailwindcss from '@tailwindcss/vite';
 import { loadEnv } from 'vite';
 import { siteMeta } from './src/lib/constants';
 const { siteUrl } = siteMeta;
@@ -17,7 +17,7 @@ export default defineConfig({
   site: siteUrl,
   output: 'static',
   prefetch: true,
-  integrations: [sitemap(), tailwind(), react(), icon()],
+  integrations: [sitemap(), react(), icon()],
   adapter: node({
     mode: 'standalone'
   }),
@@ -26,6 +26,7 @@ export default defineConfig({
   },
   vite: {
     plugins: [
+      tailwindcss(),
       // Put the Sentry vite plugin after all other plugins
       sentryVitePlugin({
         org: 'personal-a0p',
