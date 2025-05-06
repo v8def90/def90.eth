@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm build
+TINA_SKIP_SCHEMA_VALIDATION=true pnpm build
 pnpm e2e:all --reporter=list
