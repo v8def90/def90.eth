@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 const { siteTitle, siteDesc } = siteMeta;
 
-export async function get(context) {
+export async function GET(context) {
   const blog = await getCollection('blog');
   return rss({
     title: siteTitle,
